@@ -6,7 +6,6 @@ import {
   FaPhoneAlt,
   FaMapMarkerAlt,
 } from "react-icons/fa";
-import { IoMail } from "react-icons/io5";
 
 const social = [
   {
@@ -22,7 +21,7 @@ const social = [
   {
     id: 3,
     icon: <FaPhoneAlt />,
-    href: "tel:0812345678",
+    href: "tel:0819186348",
   },
 ];
 
@@ -43,8 +42,54 @@ const product = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#3C2415] text-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-12">
+    <footer className="bg-[#3C2415] text-white mt-28">
+      {/* CTA */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="-mt-16 relative z-10">
+          <div className="bg-[#2b180d] rounded-2xl shadow-2xl p-4 lg:p-5 flex flex-col lg:flex-row items-center justify-between gap-5">
+            {/* Left */}
+            <div className="text-center lg:text-left">
+              <h2 className="text-2xl lg:text-4xl font-bold">
+                สนใจสั่งซื้อกระเทียมราคาส่ง
+              </h2>
+
+              <p className="text-gray-300 mt-2">
+                สอบถามข้อมูลสินค้า หรือขอใบเสนอราคาได้เลย
+              </p>
+            </div>
+
+            {/* Right */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link
+                href="https://line.me"
+                className="bg-[#18b83e] hover:bg-[#149936] transition rounded-xl px-8 py-4 flex items-center justify-center gap-3 text-white font-bold text-xl min-w-[220px]"
+              >
+                <FaLine className="text-3xl" />
+                ทัก LINE
+              </Link>
+
+              <Link
+                href="tel:0819186348"
+                className="bg-[#ddb98e] hover:bg-[#d0a878] transition rounded-xl px-8 py-4 flex items-center gap-4 min-w-[270px]"
+              >
+                <FaPhoneAlt className="text-3xl text-[#3C2415]" />
+
+                <div className="text-[#3C2415]">
+                  <p className="font-semibold text-lg leading-5">
+                    ติดต่อเรา
+                  </p>
+                  <p className="font-bold text-2xl leading-7">
+                    081-9186348
+                  </p>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 pb-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Logo */}
           <div className="text-center lg:text-left">
@@ -118,7 +163,7 @@ export default function Footer() {
             <div className="space-y-5 text-gray-300">
               <div className="flex items-center justify-center lg:justify-start gap-3">
                 <FaPhoneAlt />
-                <span>08x-xxx-xxxx</span>
+                <span>081-9186348</span>
               </div>
 
               <div className="flex items-center justify-center lg:justify-start gap-3">
@@ -128,13 +173,14 @@ export default function Footer() {
 
               <div className="flex items-start justify-center lg:justify-start gap-3">
                 <FaMapMarkerAlt className="mt-1 shrink-0" />
-                <a href="https://maps.app.goo.gl/WKev4Dy9KFEbcSqz6">
-                  <span>
-                    ที่อยู่ 89/70 ตำบลคลองสอง
-                    <br />
-                    อำเภอคลองหลวง จังหวัดปทุมธานี 12120
-                  </span>
-                </a>
+
+                <Link href="https://maps.app.goo.gl/WKev4Dy9KFEbcSqz6">
+                  89/70 ตำบลคลองสอง
+                  <br />
+                  อำเภอคลองหลวง จังหวัดปทุมธานี
+                  <br />
+                  12120
+                </Link>
               </div>
             </div>
           </div>
