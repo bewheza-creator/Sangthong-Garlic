@@ -28,8 +28,8 @@ export default function CTASection() {
               className="lg:rounded-te-none aspect-video w-full rounded-tl-lg rounded-tr-lg object-cover lg:rounded-tr-none"
               width={300}
               height={300}
-              src="https://images.unsplash.com/photo-1760346738721-235e811f573d?q=80&w=3864&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="shadcn landing page"
+              src="/aboutme2.png"
+              alt="aboutme2"
               unoptimized
             />
           </figure>

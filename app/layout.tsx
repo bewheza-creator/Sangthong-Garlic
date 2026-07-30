@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Kanit, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/footer";
-import Nvabar from "@/components/nvabar";
+import ClientLayout from "@/components/ClientLayout";
+import { Toaster } from "@/components/ui/sonner";
 
 const kanit = Kanit({
   variable: "--font-sans",
@@ -30,11 +30,12 @@ export default function RootLayout({
       lang="en"
       className={`${kanit.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <Nvabar />
-        {children}
-        <Footer />
-        </body>
+      <body className="min-h-full flex flex-col bg-[#faf0e6]">
+        <ClientLayout>
+          {children}
+        </ClientLayout>
+        <Toaster />
+      </body>
     </html>
   );
 }

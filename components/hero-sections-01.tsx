@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Van, StarCheck } from "lucide-react";
+import { Van, StarCheck,Star  } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
@@ -47,7 +47,7 @@ export default function HeroSection() {
               </div>
               <div className="flex flex-col gap-2.5">
                 <div className="flex flex-row gap-2.5">
-                  <StarCheck />
+                  <Star  />
                   <div>
                     <h1 className="font-bold">สินค้าคุณภาพดี</h1>
                     <h1 className="font-sans">คัดพิเศษทุกล็อค</h1>
