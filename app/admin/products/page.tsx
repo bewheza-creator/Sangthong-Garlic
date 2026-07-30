@@ -116,7 +116,7 @@ export default function AdminProducts() {
             </div>
             <div className="space-y-1">
               <label className="block text-sm font-medium">หมวดหมู่</label>
-              <Select value={categoryId} onValueChange={setCategoryId}>
+              <Select value={categoryId} onValueChange={(val) => setCategoryId(val || "")}>
                 <SelectTrigger>
                   <SelectValue placeholder="-- เลือกหมวดหมู่ --" />
                 </SelectTrigger>
