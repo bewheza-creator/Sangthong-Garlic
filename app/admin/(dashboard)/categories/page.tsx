@@ -5,14 +5,24 @@ import { supabase } from "@/utils/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
-import { Trash2 } from "lucide-react";
+import { Trash2, Edit } from "lucide-react";
 
 export default function AdminCategories() {
   const [categories, setCategories] = useState<any[]>([]);
   const [name, setName] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
+
+  // Edit States
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [editingId, setEditingId] = useState("");
+  const [editName, setEditName] = useState("");
+  const [editFile, setEditFile] = useState<File | null>(null);
+  const [editLoading, setEditLoading] = useState(false);
+  const [currentImageUrl, setCurrentImageUrl] = useState("");
 
   useEffect(() => {
     fetchCategories();
@@ -35,30 +45,19 @@ export default function AdminCategories() {
     let imageUrl = "";
 
     try {
-      // 1. Upload Image
       if (file) {
         const fileExt = file.name.split('.').pop();
         const fileName = `${Math.random()}.${fileExt}`;
         const filePath = `categories/${fileName}`;
         
-        const { error: uploadError } = await supabase.storage
-          .from("images")
-          .upload(filePath, file);
-
+        const { error: uploadError } = await supabase.storage.from("images").upload(filePath, file);
         if (uploadError) throw uploadError;
 
-        const { data: publicUrlData } = supabase.storage
-          .from("images")
-          .getPublicUrl(filePath);
-        
+        const { data: publicUrlData } = supabase.storage.from("images").getPublicUrl(filePath);
         imageUrl = publicUrlData.publicUrl;
       }
 
-      // 2. Insert Category
-      const { error: insertError } = await supabase
-        .from("categories")
-        .insert([{ name, image_url: imageUrl }]);
-
+      const { error: insertError } = await supabase.from("categories").insert([{ name, image_url: imageUrl }]);
       if (insertError) throw insertError;
 
       toast.success("เพิ่มหมวดหมู่สำเร็จ!");
@@ -69,6 +68,51 @@ export default function AdminCategories() {
       toast.error(`Error: ${err.message}`);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const openEditDialog = (cat: any) => {
+    setEditingId(cat.id);
+    setEditName(cat.name);
+    setCurrentImageUrl(cat.image_url || "");
+    setEditFile(null);
+    setIsEditOpen(true);
+  };
+
+  const handleEditSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editName) return toast.error("กรุณากรอกชื่อหมวดหมู่");
+    
+    setEditLoading(true);
+    let imageUrl = currentImageUrl;
+
+    try {
+      if (editFile) {
+        const fileExt = editFile.name.split('.').pop();
+        const fileName = `${Math.random()}.${fileExt}`;
+        const filePath = `categories/${fileName}`;
+        
+        const { error: uploadError } = await supabase.storage.from("images").upload(filePath, editFile);
+        if (uploadError) throw uploadError;
+
+        const { data: publicUrlData } = supabase.storage.from("images").getPublicUrl(filePath);
+        imageUrl = publicUrlData.publicUrl;
+      }
+
+      const { error: updateError } = await supabase
+        .from("categories")
+        .update({ name: editName, image_url: imageUrl })
+        .eq("id", editingId);
+
+      if (updateError) throw updateError;
+
+      toast.success("แก้ไขหมวดหมู่สำเร็จ!");
+      setIsEditOpen(false);
+      fetchCategories();
+    } catch (err: any) {
+      toast.error(`Error: ${err.message}`);
+    } finally {
+      setEditLoading(false);
     }
   };
 
@@ -117,6 +161,44 @@ export default function AdminCategories() {
         </form>
       </div>
 
+      <Dialog open={isEditOpen} onOpenChange={setIsEditOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>แก้ไขหมวดหมู่</DialogTitle>
+          </DialogHeader>
+          <form onSubmit={handleEditSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="edit-name">ชื่อหมวดหมู่</Label>
+              <Input
+                id="edit-name"
+                value={editName}
+                onChange={(e) => setEditName(e.target.value)}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="edit-file">รูปภาพปกใหม่ (เว้นว่างหากใช้รูปเดิม)</Label>
+              {currentImageUrl && !editFile && (
+                <div className="mb-2">
+                  <img src={currentImageUrl} alt="Current" className="w-16 h-16 object-cover rounded shadow" />
+                </div>
+              )}
+              <Input
+                id="edit-file"
+                type="file"
+                accept="image/*"
+                onChange={(e) => setEditFile(e.target.files?.[0] || null)}
+              />
+            </div>
+            <DialogFooter>
+              <Button type="submit" disabled={editLoading} className="bg-[#3C2415] hover:bg-[#5a3620]">
+                {editLoading ? "กำลังบันทึก..." : "บันทึกการแก้ไข"}
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
+
       <div className="bg-white p-6 rounded-xl shadow-sm border">
         <h2 className="text-xl font-bold mb-4">รายการหมวดหมู่</h2>
         <div className="border rounded-md">
@@ -147,7 +229,10 @@ export default function AdminCategories() {
                   </TableCell>
                   <TableCell className="font-medium">{cat.name}</TableCell>
                   <TableCell className="text-right">
-                    <Button variant="destructive" size="icon" onClick={() => handleDelete(cat.id)}>
+                    <Button variant="ghost" size="icon" className="text-blue-500 hover:text-blue-700 hover:bg-blue-50 mr-2" onClick={() => openEditDialog(cat)}>
+                      <Edit className="h-4 w-4" />
+                    </Button>
+                    <Button variant="ghost" size="icon" className="text-red-500 hover:text-red-700 hover:bg-red-50" onClick={() => handleDelete(cat.id)}>
                       <Trash2 className="h-4 w-4" />
                     </Button>
                   </TableCell>
@@ -160,3 +245,4 @@ export default function AdminCategories() {
     </div>
   );
 }
+

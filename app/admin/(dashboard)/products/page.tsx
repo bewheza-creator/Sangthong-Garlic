@@ -6,8 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
-import { Trash2 } from "lucide-react";
+import { Trash2, Edit } from "lucide-react";
 
 export default function AdminProducts() {
   const [products, setProducts] = useState<any[]>([]);
@@ -18,17 +20,24 @@ export default function AdminProducts() {
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
 
+  // Edit States
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [editingId, setEditingId] = useState("");
+  const [editName, setEditName] = useState("");
+  const [editCategoryId, setEditCategoryId] = useState("");
+  const [editFile, setEditFile] = useState<File | null>(null);
+  const [editLoading, setEditLoading] = useState(false);
+  const [currentImageUrl, setCurrentImageUrl] = useState("");
+
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
-    // Fetch categories for dropdown
     const { data: catData, error: catError } = await supabase.from("categories").select("id, name");
     if (catError) toast.error("ดึงข้อมูลหมวดหมู่ล้มเหลว");
     setCategories(catData || []);
 
-    // Fetch products with their category
     const { data: prodData, error } = await supabase
       .from("products")
       .select("*, categories(name)")
@@ -55,16 +64,10 @@ export default function AdminProducts() {
         const fileName = `${Math.random()}.${fileExt}`;
         const filePath = `products/${fileName}`;
         
-        const { error: uploadError } = await supabase.storage
-          .from("images")
-          .upload(filePath, file);
-
+        const { error: uploadError } = await supabase.storage.from("images").upload(filePath, file);
         if (uploadError) throw uploadError;
 
-        const { data: publicUrlData } = supabase.storage
-          .from("images")
-          .getPublicUrl(filePath);
-        
+        const { data: publicUrlData } = supabase.storage.from("images").getPublicUrl(filePath);
         imageUrl = publicUrlData.publicUrl;
       }
 
@@ -83,6 +86,52 @@ export default function AdminProducts() {
       toast.error(`Error: ${err.message}`);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const openEditDialog = (prod: any) => {
+    setEditingId(prod.id);
+    setEditName(prod.name);
+    setEditCategoryId(prod.category_id || "");
+    setCurrentImageUrl(prod.image_url || "");
+    setEditFile(null);
+    setIsEditOpen(true);
+  };
+
+  const handleEditSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editName || !editCategoryId) return toast.error("กรุณากรอกชื่อและเลือกหมวดหมู่");
+    
+    setEditLoading(true);
+    let imageUrl = currentImageUrl;
+
+    try {
+      if (editFile) {
+        const fileExt = editFile.name.split('.').pop();
+        const fileName = `${Math.random()}.${fileExt}`;
+        const filePath = `products/${fileName}`;
+        
+        const { error: uploadError } = await supabase.storage.from("images").upload(filePath, editFile);
+        if (uploadError) throw uploadError;
+
+        const { data: publicUrlData } = supabase.storage.from("images").getPublicUrl(filePath);
+        imageUrl = publicUrlData.publicUrl;
+      }
+
+      const { error: updateError } = await supabase
+        .from("products")
+        .update({ name: editName, image_url: imageUrl, category_id: editCategoryId })
+        .eq("id", editingId);
+
+      if (updateError) throw updateError;
+
+      toast.success("แก้ไขสินค้าสำเร็จ!");
+      setIsEditOpen(false);
+      fetchData();
+    } catch (err: any) {
+      toast.error(`Error: ${err.message}`);
+    } finally {
+      setEditLoading(false);
     }
   };
 
@@ -148,6 +197,59 @@ export default function AdminProducts() {
         </form>
       </div>
 
+      <Dialog open={isEditOpen} onOpenChange={setIsEditOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>แก้ไขสินค้า</DialogTitle>
+          </DialogHeader>
+          <form onSubmit={handleEditSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="edit-name">ชื่อสินค้า</Label>
+              <Input
+                id="edit-name"
+                value={editName}
+                onChange={(e) => setEditName(e.target.value)}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="edit-category">หมวดหมู่</Label>
+              <Select value={editCategoryId} onValueChange={(val) => setEditCategoryId(val || "")}>
+                <SelectTrigger id="edit-category">
+                  <SelectValue placeholder="-- เลือกหมวดหมู่ --" />
+                </SelectTrigger>
+                <SelectContent>
+                  {categories.map((c) => (
+                    <SelectItem key={c.id} value={c.id}>
+                      {c.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="edit-file">รูปภาพใหม่ (เว้นว่างหากใช้รูปเดิม)</Label>
+              {currentImageUrl && !editFile && (
+                <div className="mb-2">
+                  <img src={currentImageUrl} alt="Current" className="w-16 h-16 object-cover rounded shadow" />
+                </div>
+              )}
+              <Input
+                id="edit-file"
+                type="file"
+                accept="image/*"
+                onChange={(e) => setEditFile(e.target.files?.[0] || null)}
+              />
+            </div>
+            <DialogFooter>
+              <Button type="submit" disabled={editLoading} className="bg-[#3C2415] hover:bg-[#5a3620]">
+                {editLoading ? "กำลังบันทึก..." : "บันทึกการแก้ไข"}
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
+
       <div className="bg-white p-6 rounded-xl shadow-sm border">
         <h2 className="text-xl font-bold mb-4">รายการสินค้าทั้งหมด</h2>
         <div className="border rounded-md">
@@ -180,7 +282,10 @@ export default function AdminProducts() {
                   <TableCell className="font-medium">{p.name}</TableCell>
                   <TableCell className="text-sm text-gray-600">{p.categories?.name}</TableCell>
                   <TableCell className="text-right">
-                    <Button variant="destructive" size="icon" onClick={() => handleDelete(p.id)}>
+                    <Button variant="ghost" size="icon" className="text-blue-500 hover:text-blue-700 hover:bg-blue-50 mr-2" onClick={() => openEditDialog(p)}>
+                      <Edit className="h-4 w-4" />
+                    </Button>
+                    <Button variant="ghost" size="icon" className="text-red-500 hover:text-red-700 hover:bg-red-50" onClick={() => handleDelete(p.id)}>
                       <Trash2 className="h-4 w-4" />
                     </Button>
                   </TableCell>
@@ -193,3 +298,4 @@ export default function AdminProducts() {
     </div>
   );
 }
+

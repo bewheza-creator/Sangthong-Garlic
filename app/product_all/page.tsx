@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 /* eslint-disable react-hooks/set-state-in-effect */
 
 import { useCallback, useEffect, useState } from "react";
@@ -60,7 +61,7 @@ export default function AllProductsPage() {
         {/* Right: Hero Image */}
         <div className="w-full md:w-1/2 flex justify-center md:justify-end">
           <div className="w-full max-w-[600px] aspect-[4/3] rounded-3xl flex items-center justify-center relative overflow-hidden bg-transparent">
-             <img src="/images/hero/hero.png" alt="Hero" className="w-full h-full object-contain md:object-cover scale-110" />
+             <Image src="/images/home/home4.png" alt="Hero" width="500" height="500" className="object-contain md:object-cover scale-110" />
           </div>
         </div>
       </section>

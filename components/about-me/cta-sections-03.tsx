@@ -2,29 +2,28 @@ import Image from "next/image";
 
 export default function CTASection2() {
   return (
-    <section className="py-12 lg:py-20">
+    <section className="pb-12 lg:pb-20 bg-[#eae1d3]">
       <div className="mx-auto max-w-7xl px-4">
-        <div className="bg-muted relative grid grid-cols-1 flex-col justify-between gap-4 overflow-hidden rounded-lg text-center lg:grid-cols-2 lg:flex-row lg:gap-10 lg:text-start">
-          <header className="flex flex-col px-4 py-10 lg:px-10">
-            <div className="mb-4 space-y-4">
-              <h3 className="font-heading text-3xl text-balance md:text-4xl">
+        <div className="bg-[#f6efe6] relative grid grid-cols-1 flex-col justify-between overflow-hidden rounded-[20px] text-center lg:grid-cols-2 lg:flex-row lg:text-start shadow-sm border border-[#e6dccb]">
+          <header className="flex flex-col px-6 py-10 lg:px-12 justify-center">
+            <div className="space-y-6">
+              <h3 className="font-heading text-3xl md:text-4xl text-[#2d1b11] font-bold">
                 วิสัยทัศน์ของเรา
               </h3>
-              <p className="text-muted-foreground md:text-lg">
+              <p className="text-[#5c4a3d] md:text-lg leading-relaxed">
                 เรามุ่งมั่นเป็นศูนย์กลางการจำหน่าย หอมแดง กระเทียม พริกแห้ง
                 และวัตถุดิบอาหารคุณภาพ ที่ลูกค้าทั่วประเทศไว้วางใจ
                 ด้วยสินค้าคุณภาพ บริการจริงใจ และราคาที่ยุติธรรม
-                เพื่อเป็นพันธมิตรที่เติบโดไปพร้อมกับธุรกิจของลูกค้า
+                เพื่อเป็นพันธมิตรที่เติบโตไปพร้อมกับธุรกิจของลูกค้า
               </p>
             </div>
           </header>
-          <figure className="relative lg:mt-10 lg:self-end">
+          <figure className="relative h-64 lg:h-auto w-full">
             <Image
-              className="lg:rounded-te-none aspect-video w-full rounded-tl-lg rounded-tr-lg object-cover lg:rounded-tr-none"
-              width={300}
-              height={300}
+              className="object-cover"
+              fill
               src="/images/about/me3.png"
-              alt="shadcn landing page"
+              alt="Our Vision"
               unoptimized
             />
           </figure>

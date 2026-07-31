@@ -1,76 +1,70 @@
-const posts = [
-  {
-    id: 1,
-    category: "Engineering",
-    title: "How we cut cold-start latency by 60% across all edge regions",
-    excerpt:
-      "A deep dive into our deployment pipeline refactor and the caching layer that changed everything about how we handle request distribution.",
-    date: "May 28, 2025",
-    readTime: "8 min read",
-  },
-  {
-    id: 2,
-    category: "Design",
-    title: "Building a token-first design system that scales across 12 products",
-    excerpt:
-      "Semantic tokens, dark mode, and the decision to move entirely to OKLCH. Here&apos;s what we learned after six months in production.",
-    date: "May 14, 2025",
-    readTime: "6 min read",
-  },
-  {
-    id: 3,
-    category: "Product",
-    title: "Shipping faster without breaking things: our new release cadence",
-    excerpt:
-      "Weekly releases used to terrify us. After restructuring our QA pipeline and adopting feature flags at the team level, they&apos;re routine.",
-    date: "Apr 30, 2025",
-    readTime: "5 min read",
-  },
-]
+import Image from "next/image";
+import Link from "next/link";
+import { supabase } from "@/utils/supabase/client";
 
-export default function Blog01() {
+export default async function Blog01() {
+  const { data: posts } = await supabase
+    .from("blogs")
+    .select("*")
+    .order("created_at", { ascending: false });
+
   return (
-    <section className="bg-background py-20 sm:py-28">
-      <div className="mx-auto max-w-5xl px-6 sm:px-10">
-        <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+    <section className="bg-[#fbf7f0] py-20 sm:py-28 min-h-screen">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between text-center sm:text-left">
           <div>
-            <span className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
-              Blog
-            </span>
-            <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              From the team
+            <p className="text-[#b91c1c] font-bold text-sm lg:text-base mb-2 uppercase tracking-wide">
+              บทความและข่าวสาร
+            </p>
+            <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight text-[#2d1b11] sm:text-4xl font-heading">
+              อัปเดตล่าสุดจากร้านแสงทอง
             </h2>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
-          {posts.map((post) => (
-            <a
-              key={post.id}
-              href="#"
-              className="group flex flex-col gap-4 rounded-2xl border border-border bg-card p-6 transition-shadow hover:shadow-2xl hover:shadow-black/10"
-            >
-              <div className="aspect-[16/9] w-full rounded-xl bg-muted" />
-              <div className="flex flex-col gap-2">
-                <span className="text-xs font-medium text-primary">
-                  {post.category}
-                </span>
-                <h3 className="text-balance text-sm font-semibold leading-snug text-foreground group-hover:text-primary transition-colors">
-                  {post.title}
-                </h3>
-                <p className="line-clamp-3 text-xs text-muted-foreground text-pretty">
-                  {post.excerpt}
-                </p>
-              </div>
-              <div className="mt-auto flex items-center gap-2 text-xs text-muted-foreground">
-                <span>{post.date}</span>
-                <span aria-hidden>·</span>
-                <span>{post.readTime}</span>
-              </div>
-            </a>
-          ))}
-        </div>
+        {!posts || posts.length === 0 ? (
+          <div className="text-center py-20 text-[#5c4a3d]">
+            ยังไม่มีบทความในขณะนี้
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {posts.map((post) => (
+              <Link
+                key={post.id}
+                href={`/blog/${post.id}`}
+                className="group flex flex-col gap-4 rounded-[20px] border border-[#e6dccb] bg-[#f6efe6] p-4 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-[#d4c8b6]"
+              >
+                <div className="aspect-[16/9] w-full rounded-xl bg-[#e6dccb] relative overflow-hidden">
+                  <Image
+                    src={post.image_url || "/images/product/garlic.png"}
+                    alt={post.title}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    unoptimized
+                  />
+                </div>
+                <div className="flex flex-col gap-3 px-2 pt-2">
+                  <span className="text-xs font-bold text-[#b91c1c]">
+                    {post.category}
+                  </span>
+                  <h3 className="text-balance text-lg font-bold leading-snug text-[#2d1b11] group-hover:text-[#b91c1c] transition-colors">
+                    {post.title}
+                  </h3>
+                  <p className="line-clamp-3 text-sm text-[#5c4a3d] text-pretty leading-relaxed">
+                    {post.excerpt}
+                  </p>
+                </div>
+                <div className="mt-auto flex items-center gap-2 px-2 pb-2 pt-4 text-xs font-medium text-[#5c4a3d]">
+                  <span>{new Date(post.created_at).toLocaleDateString('th-TH', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                  <span aria-hidden>·</span>
+                  <span>{post.read_time}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
     </section>
-  )
+  );
 }
+
