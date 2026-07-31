@@ -20,7 +20,7 @@ export default function AdminLogin() {
     setLoading(true);
     
     // แปลง Username ธรรมดาให้เป็นรูปแบบ Email สำหรับ Supabase Auth
-    const emailToLogin = username.includes("@") ? username : `${username}@admin.com`;
+    const emailToLogin = (username.includes("@") ? username : `${username}@admin.com`).toLowerCase();
 
     const { error } = await supabase.auth.signInWithPassword({
       email: emailToLogin,
@@ -55,6 +55,9 @@ export default function AdminLogin() {
                 required 
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                autoCapitalize="none"
+                autoComplete="off"
+                autoCorrect="off"
               />
             </div>
             <div className="space-y-2">
