@@ -6,10 +6,15 @@ import Image from "next/image";
 import { FaPhoneAlt, FaLine, FaChevronDown, FaBars, FaTimes } from "react-icons/fa";
 import { supabase } from "@/utils/supabase/client";
 
+type Category = {
+  id: string;
+  name: string;
+};
+
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mobileCatOpen, setMobileCatOpen] = useState(false);
-  const [categories, setCategories] = useState<any[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
     const fetchCategories = async () => {

@@ -2,46 +2,46 @@ import { FaPhoneAlt, FaLine, FaMapMarkerAlt } from "react-icons/fa";
 
 export default function CardContact() {
   return (
-    <section className="w-full py-12 bg-transparent">
-      <div className="max-w-[1100px] mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-stretch">
+    <section className="w-full py-6 bg-transparent">
+      <div className="max-w-[1000px] mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* ================= Contact (Left, smaller width) ================= */}
-          <div className="lg:col-span-5 relative mt-6 flex flex-col h-full">
+          <div className="lg:col-span-5 relative mt-6 flex flex-col">
             {/* Tag */}
-            <div className="absolute -top-5 left-6 rounded-xl bg-[#3c1c04] px-6 py-2 text-xl font-bold text-white shadow-md z-10">
+            <div className="absolute -top-5 left-6 rounded-xl bg-[#3c1c04] px-6 py-2 text-lg font-bold text-white shadow-md z-10">
               ติดต่อเรา
             </div>
 
-            <div className="relative flex flex-col flex-1 justify-center rounded-[1.5rem] border-[2px] border-[#e1ccb7] bg-[#f0e4d8] px-6 py-8 shadow-lg h-full">
-              <div className="flex flex-col gap-6 justify-center w-full">
+            <div className="relative flex flex-col rounded-[1.5rem] border border-[#e1ccb7] bg-[#fdf7f1] px-6 py-6 shadow-sm">
+              <div className="flex flex-col gap-5 w-full mt-2">
                 {/* Phone */}
-                <div className="flex items-center gap-5">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#7a120d] text-2xl text-white shadow-md">
+                <div className="flex items-center gap-4">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#7a120d] text-xl text-white shadow-sm">
                     <FaPhoneAlt />
                   </div>
                   <div>
-                    <p className="text-base font-bold text-[#5c5c5c] mb-0.5">
+                    <p className="text-sm font-bold text-[#5c5c5c] mb-0.5">
                       โทรศัพท์
                     </p>
-                    <h2 className="text-2xl lg:text-3xl font-extrabold text-black tracking-tight">
+                    <h2 className="text-xl lg:text-2xl font-extrabold text-black tracking-tight">
                       081-9186348
                     </h2>
                   </div>
                 </div>
 
-                <hr className="border-[#d5be9e] border-t-2" />
+                <hr className="border-[#e1ccb7] border-t" />
 
                 {/* LINE */}
-                <div className="flex items-center gap-5">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#06c755] text-2xl text-white shadow-md">
+                <div className="flex items-center gap-4">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#06c755] text-2xl text-white shadow-sm">
                     <FaLine />
                   </div>
                   <div>
-                    <p className="text-base font-bold text-[#5c5c5c] mb-0.5">
+                    <p className="text-sm font-bold text-[#5c5c5c] mb-0.5">
                       LINE
                     </p>
-                    <h2 className="text-2xl lg:text-3xl font-extrabold text-black tracking-tight">
+                    <h2 className="text-xl lg:text-2xl font-extrabold text-black tracking-tight">
                       @saengthong
                     </h2>
                   </div>
@@ -51,16 +51,16 @@ export default function CardContact() {
           </div>
 
           {/* ================= Map (Right, larger width) ================= */}
-          <div className="lg:col-span-7 relative mt-6 flex flex-col h-full">
+          <div className="lg:col-span-7 relative mt-6 flex flex-col">
             {/* Tag */}
-            <div className="absolute -top-5 left-6 rounded-xl bg-[#3c1c04] px-6 py-2 text-xl font-bold text-white shadow-md z-10">
+            <div className="absolute -top-5 left-6 rounded-xl bg-[#3c1c04] px-6 py-2 text-lg font-bold text-white shadow-md z-10">
               แผนที่ร้าน
             </div>
 
-            <div className="relative flex flex-col flex-1 rounded-[1.5rem] border-[2px] border-[#e1ccb7] bg-[#f9f3eb] p-2 pt-10 shadow-lg h-full">
+            <div className="relative flex flex-col rounded-[1.5rem] border border-[#e1ccb7] bg-[#fdf7f1] p-2 pt-8 shadow-sm">
               
               {/* Map container */}
-              <div className="relative w-full rounded-xl overflow-hidden border border-[#d5be9e] bg-gray-100 flex-1 min-h-[220px]">
+              <div className="relative w-full rounded-xl overflow-hidden border border-[#e1ccb7] bg-gray-100 h-[180px]">
                 <iframe
                   title="Google Map"
                   src="https://www.google.com/maps?q=ตลาดไท&output=embed"
@@ -75,7 +75,7 @@ export default function CardContact() {
                   href="https://maps.google.com/?q=ตลาดไท"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center justify-center gap-2 rounded-xl bg-[#8b1d18] py-2 px-6 text-base lg:text-lg font-bold text-white transition-all duration-300 hover:bg-[#701510] hover:scale-[1.02] shadow-lg w-[85%] sm:w-[auto] whitespace-nowrap z-20"
+                  className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center justify-center gap-2 rounded-xl bg-[#8b1d18] py-2 px-5 text-sm font-bold text-white transition-all duration-300 hover:bg-[#701510] shadow-md whitespace-nowrap z-20"
                 >
                   <FaMapMarkerAlt />
                   <span>คลิกเพื่อเปิดแผนที่ Google Maps</span>

@@ -28,8 +28,6 @@ const posts = [
   },
 ]
 
-import Image from "next/image";
-
 export default function page() {
   return (
     <div className="flex flex-col gap-3.5 justify-center items-center">

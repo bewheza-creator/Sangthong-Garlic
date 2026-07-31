@@ -1,5 +1,3 @@
-import { ArrowRight } from "lucide-react"
-
 const posts = [
   {
     id: 1,

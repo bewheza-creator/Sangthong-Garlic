@@ -56,20 +56,18 @@ export default function CTASection1() {
               <div className="flex flex-row gap-2.5">
                 <figure className="relative lg:mt-10 lg:self-end">
                   <Image
-                    className="lg:rounded-te-none aspect-video w-full rounded-tl-lg rounded-tr-lg object-cover lg:rounded-tr-none"
-                    width={300}
-                    height={300}
-                    src="https://images.unsplash.com/photo-1760346738721-235e811f573d?q=80&w=3864&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    width={500}
+                    height={500}
+                    src="/map1.jpg"
                     alt="shadcn landing page"
                     unoptimized
                   />
                 </figure>
                 <figure className="relative lg:mt-10 lg:self-end">
                   <Image
-                    className="lg:rounded-te-none aspect-video w-full rounded-tl-lg rounded-tr-lg object-cover lg:rounded-tr-none"
-                    width={300}
-                    height={300}
-                    src="https://images.unsplash.com/photo-1760346738721-235e811f573d?q=80&w=3864&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    width={500}
+                    height={500}
+                    src="/me4.png"
                     alt="shadcn landing page"
                     unoptimized
                   />

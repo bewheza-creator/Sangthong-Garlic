@@ -1,26 +1,34 @@
 "use client";
+/* eslint-disable react-hooks/set-state-in-effect */
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { supabase } from "@/utils/supabase/client";
 import Link from "next/link";
 import { FaChevronLeft, FaLeaf, FaShieldAlt, FaHandshake } from "react-icons/fa";
 
+type Category = {
+  id: string;
+  name: string;
+  image_url: string | null;
+};
+
+type Product = {
+  id: string;
+  name: string;
+  image_url: string | null;
+  category_id: string;
+};
+
 export default function CategoryProductsPage() {
   const params = useParams();
   const categoryId = params.categoryId as string;
   
-  const [category, setCategory] = useState<any>(null);
-  const [products, setProducts] = useState<any[]>([]);
+  const [category, setCategory] = useState<Category | null>(null);
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (categoryId) {
-      fetchData();
-    }
-  }, [categoryId]);
-
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     setLoading(true);
     
     // Fetch category info
@@ -42,7 +50,13 @@ export default function CategoryProductsPage() {
     if (prodData) setProducts(prodData);
     
     setLoading(false);
-  };
+  }, [categoryId]);
+
+  useEffect(() => {
+    if (categoryId) {
+      fetchData();
+    }
+  }, [categoryId, fetchData]);
 
   if (loading) {
     return <div className="min-h-screen bg-[#FAF7F2] flex items-center justify-center">กำลังโหลดข้อมูล...</div>;
@@ -57,7 +71,7 @@ export default function CategoryProductsPage() {
       {/* Top Banner Section */}
       <section className="w-full max-w-7xl mx-auto px-6 py-12 md:py-16 flex flex-col md:flex-row items-center justify-between gap-10">
         <div className="flex flex-col text-center md:text-left space-y-3 md:w-1/2">
-          <Link href="/product" className="flex items-center justify-center md:justify-start gap-2 text-[#A38671] hover:text-[#6D4527] transition mb-2">
+          <Link href="/product_all" className="flex items-center justify-center md:justify-start gap-2 text-[#A38671] hover:text-[#6D4527] transition mb-2">
             <FaChevronLeft /> กลับไปหน้าหมวดหมู่
           </Link>
           

@@ -1,17 +1,21 @@
 "use client";
+/* eslint-disable react-hooks/set-state-in-effect */
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { supabase } from "@/utils/supabase/client";
 
+type Product = {
+  id: string;
+  name: string;
+  image_url: string | null;
+  created_at?: string;
+};
+
 export default function AllProductsPage() {
-  const [products, setProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     // Fetch all products
     const { data: prodData, error: prodError } = await supabase
       .from("products")
@@ -20,9 +24,12 @@ export default function AllProductsPage() {
       
     if (prodError) console.error("Error fetching products:", prodError);
     else setProducts(prodData || []);
-    
     setLoading(false);
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   return (
     <div className="flex flex-col w-full bg-[#FAF7F2] min-h-screen font-sans">
@@ -30,20 +37,20 @@ export default function AllProductsPage() {
       <section className="w-full max-w-7xl mx-auto px-6 py-12 md:py-20 flex flex-col md:flex-row items-center justify-between gap-10">
         
         {/* Left: Text Content */}
-        <div className="flex flex-col text-center md:text-left text-[#4A2D16] space-y-3 md:w-1/2">
-          <h1 className="text-5xl md:text-[80px] font-black tracking-tight leading-none drop-shadow-sm text-[#4A2D16]">
-            สินค้าทั้งหมด
+        <div className="flex flex-col text-center md:text-left text-[#4a3219] space-y-3 md:w-1/2">
+          <h1 className="text-5xl md:text-[80px] font-black tracking-tight leading-none text-[#4a3219]">
+            สินค้าอื่นๆ
           </h1>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#5C3A21] pt-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#4a3219] pt-4">
             คุณภาพดี ราคาส่ง
           </h2>
-          <p className="text-xl md:text-2xl font-bold mt-2 text-[#6D4527]">
+          <p className="text-xl md:text-2xl font-bold mt-2 text-[#4a3219]">
             คัดสรรจากแหล่งผลิตโดยตรง
           </p>
           
           <div className="flex items-center justify-center md:justify-start gap-4 mt-8 pt-4">
             <div className="h-[2px] w-16 bg-[#A38671]"></div>
-            <span className="text-lg md:text-xl font-bold text-[#6D4527]">
+            <span className="text-lg md:text-xl font-bold text-[#4a3219]">
               สด ใหม่ สะอาด ได้มาตรฐาน
             </span>
             <div className="h-[2px] w-16 bg-[#A38671]"></div>
@@ -51,11 +58,9 @@ export default function AllProductsPage() {
         </div>
 
         {/* Right: Hero Image */}
-        <div className="w-full md:w-1/2 flex justify-center">
-          <div className="w-full max-w-[500px] aspect-square rounded-full flex items-center justify-center relative">
-             <div className="w-full h-full bg-[#EADDCE] rounded-full flex items-center justify-center opacity-90 overflow-hidden relative border-8 border-[#FAF7F2] shadow-xl">
-                <img src="/hero.png" alt="Hero" className="w-full h-full object-cover" />
-             </div>
+        <div className="w-full md:w-1/2 flex justify-center md:justify-end">
+          <div className="w-full max-w-[600px] aspect-[4/3] rounded-3xl flex items-center justify-center relative overflow-hidden bg-transparent">
+             <img src="/hero.png" alt="Hero" className="w-full h-full object-contain md:object-cover scale-110" />
           </div>
         </div>
       </section>

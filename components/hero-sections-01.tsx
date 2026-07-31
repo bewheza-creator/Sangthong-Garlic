@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { Van, StarCheck,Star  } from "lucide-react";
+import { Van, StarCheck, Star, ShoppingCart } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { FaLine } from "react-icons/fa";
 
 export default function HeroSection() {
   return (
@@ -9,30 +10,31 @@ export default function HeroSection() {
       <div className="mx-auto max-w-7xl px-4">
         <div className="grid items-center gap-8 lg:grid-cols-2">
           <header className="flex flex-col items-center text-center lg:items-start lg:text-left">
-            <Badge variant="outline">จำหน่าย</Badge>
-            <h1 className="font-heading my-4 text-4xl text-balance md:text-5xl lg:leading-14">
+            <Badge className="bg-[#4a3219] hover:bg-[#4a3219]/90 text-white rounded-full px-5 py-1.5 text-base font-medium mb-4 shadow-none border-none">จำหน่าย</Badge>
+            <h1 className="font-sans font-bold my-4 text-5xl text-balance md:text-6xl lg:leading-tight text-[#4a3219]">
               หอมแดง กระเทียม
               <br />
-              พริกปห้ง ราคาส่ง
+              พริกแห้ง <span className="text-[#a51d21]">ราคาส่ง</span>
             </h1>
-            <p className="text-muted-foreground mb-8 text-balance lg:text-lg">
+            <p className="text-[#333333] font-medium mb-8 text-balance text-lg lg:text-xl leading-relaxed">
               จากแหล่งผลิตโดยตรง คัดคุณภาพทุกล็อต
               <br />
               สด ใหม่ ได้มาตรฐาน
             </p>
-            <div className="flex justify-center gap-2">
+            <div className="flex justify-center lg:justify-start gap-4">
               <Button
-                render={<Link href="https://app.yoursaas.com/signup" />}
+                className="bg-[#4a3219] hover:bg-[#4a3219]/90 text-white text-lg px-6 h-14 rounded-md flex gap-2 items-center shadow-none border-none"
+                render={<Link href="#products" />}
                 nativeButton={false}
               >
-                ดูสินค้า
+                <ShoppingCart className="w-5 h-5" /> ดูสินค้า
               </Button>
               <Button
-                variant="outline"
-                render={<Link href="https://app.yoursaas.com/demo" />}
+                className="bg-[#06C755] hover:bg-[#06C755]/90 text-white text-lg px-6 h-14 rounded-md flex gap-2 items-center shadow-none border-none"
+                render={<Link href="#line" />}
                 nativeButton={false}
               >
-                ติดต่อ LINE
+                <FaLine className="w-6 h-6" /> ติดต่อ LINE
               </Button>
             </div>
             <div className="flex flex-row justify-center items-center gap-2.5 mt-10">
