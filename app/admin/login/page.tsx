@@ -47,11 +47,11 @@ export default function AdminLogin() {
         <form onSubmit={handleLogin}>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="username">ชื่อผู้ใช้ (Username)</Label>
+              <Label htmlFor="username">ชื่อผู้ใช้</Label>
               <Input 
                 id="username" 
                 type="text" 
-                placeholder="เช่น bewheza" 
+                placeholder="เช่น admin หรือ email@example.com" 
                 required 
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
