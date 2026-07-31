@@ -25,7 +25,7 @@ export default function CTASection() {
               className="lg:rounded-te-none aspect-video w-full rounded-tl-lg rounded-tr-lg object-cover lg:rounded-tr-none"
               width={300}
               height={300}
-              src="/aboutme2.png"
+              src="/images/about/aboutme2.png"
               alt="aboutme2"
               unoptimized
             />

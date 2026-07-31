@@ -68,7 +68,7 @@ export default function HeroSection() {
             </div>
           </header>
           <img
-            src="/hero.avif"
+            src="/images/hero/hero.avif"
             alt="Dashboard interface of the SaaS platform"
             className="aspect-square w-full rounded-md object-cover"
           />

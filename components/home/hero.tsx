@@ -27,7 +27,7 @@ export default function Hero() {
           </div>
         </div>
         <div className="relative">
-            <Image src="/hero.png" width={1000} height={1000} alt="Hero-img" />
+            <Image src="/images/hero/hero.png" width={1000} height={1000} alt="Hero-img" />
         </div>
       </div>
     </section>

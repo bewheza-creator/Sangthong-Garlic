@@ -35,7 +35,7 @@ export default function Navbar() {
         {/* Logo Section */}
         <Link href="/" className="flex items-center gap-3 cursor-pointer">
           <Image
-            src="/logo-no-bg.png"
+            src="/images/brand/logo-no-bg.png"
             alt="ร้านแสงทอง"
             width={150}
             height={50}

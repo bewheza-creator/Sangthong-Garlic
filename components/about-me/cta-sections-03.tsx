@@ -23,7 +23,7 @@ export default function CTASection2() {
               className="lg:rounded-te-none aspect-video w-full rounded-tl-lg rounded-tr-lg object-cover lg:rounded-tr-none"
               width={300}
               height={300}
-              src="/me3.png"
+              src="/images/about/me3.png"
               alt="shadcn landing page"
               unoptimized
             />

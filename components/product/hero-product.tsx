@@ -1,5 +1,4 @@
 import Image from "next/image";
-import garlic from "../../public/garlic.png";
 
 export default function Hero_Product() {
   return (
@@ -32,7 +31,7 @@ export default function Hero_Product() {
               The design shows a large image that blends into the background. */}
           <div className="relative w-full max-w-[600px] aspect-[4/3] md:aspect-square">
             <Image 
-              src={garlic} 
+              src="/images/product/garlic.png" 
               alt="กระเทียมคุณภาพดี" 
               fill
               className="object-contain md:object-cover object-right mix-blend-multiply mask-l-from-50% mask-l-to-90%" 

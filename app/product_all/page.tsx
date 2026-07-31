@@ -60,7 +60,7 @@ export default function AllProductsPage() {
         {/* Right: Hero Image */}
         <div className="w-full md:w-1/2 flex justify-center md:justify-end">
           <div className="w-full max-w-[600px] aspect-[4/3] rounded-3xl flex items-center justify-center relative overflow-hidden bg-transparent">
-             <img src="/hero.png" alt="Hero" className="w-full h-full object-contain md:object-cover scale-110" />
+             <img src="/images/hero/hero.png" alt="Hero" className="w-full h-full object-contain md:object-cover scale-110" />
           </div>
         </div>
       </section>

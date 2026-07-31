@@ -43,26 +43,43 @@ const product = [
 
 export default function Footer() {
   return (
-    <div className="flex flex-col gap-3.5">
-      <div className="bg-[#2B1B12] max-w-7xl mx-auto w-full p-6 md:p-8 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6 my-6 shadow-xl">
-        <div className="flex flex-col gap-2 text-center md:text-left">
-          <h1 className="font-bold text-3xl md:text-4xl text-white">สนใจสั่งซื้อหอมราคาส่ง</h1>
-          <p className="text-lg md:text-xl text-gray-200">สอบถามข้อมูลสินค้า หรือขอใบเสนอราคาได้เลย</p>
-        </div>
-        
-        <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
-          <Link href="https://line.me" target="_blank" className="flex-1 sm:flex-none flex flex-row gap-3 bg-[#00B900] hover:bg-[#009900] transition rounded-xl px-8 py-4 items-center justify-center">
-            <FaLine className="text-3xl text-white" />
-            <span className="text-xl font-bold text-white tracking-wide">ทัก LINE</span>
-          </Link>
-          
-          <a href="tel:0819186348" className="flex-1 sm:flex-none flex flex-row gap-3 bg-[#D4A373] hover:bg-[#C39363] transition rounded-xl px-8 py-4 items-center justify-center text-[#2B1B12]">
-            <FaPhoneAlt className="text-3xl" />
-            <div className="flex flex-col text-left leading-tight">
-              <span className="text-sm font-semibold">ติดต่อเรา</span>
-              <span className="text-xl font-bold tracking-wide">081-9186348</span>
-            </div>
-          </a>
+    <div className="flex flex-col gap-4">
+      <div className="mx-auto w-full max-w-7xl px-4 md:px-6 lg:px-8">
+        <div className="grid gap-5 rounded-3xl bg-[#2B1B12] p-6 shadow-xl md:p-8 lg:grid-cols-[1.3fr_1fr] lg:items-center">
+          <div className="flex flex-col gap-2 text-center lg:text-left">
+            <h1 className="text-3xl font-bold text-white md:text-4xl">
+              สนใจสั่งซื้อหอมราคาส่ง
+            </h1>
+            <p className="text-lg text-gray-200 md:text-xl">
+              สอบถามข้อมูลสินค้า หรือขอใบเสนอราคาได้เลย
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <Link
+              href="https://line.me"
+              target="_blank"
+              className="flex w-full items-center justify-center gap-3 rounded-2xl bg-[#00B900] px-6 py-4 transition hover:bg-[#009900]"
+            >
+              <FaLine className="text-3xl text-white" />
+              <span className="text-xl font-bold tracking-wide text-white">
+                ทัก LINE
+              </span>
+            </Link>
+
+            <a
+              href="tel:0819186348"
+              className="flex w-full items-center justify-center gap-3 rounded-2xl bg-[#D4A373] px-6 py-4 text-[#2B1B12] transition hover:bg-[#C39363]"
+            >
+              <FaPhoneAlt className="text-3xl" />
+              <div className="flex flex-col text-left leading-tight">
+                <span className="text-sm font-semibold">ติดต่อเรา</span>
+                <span className="text-xl font-bold tracking-wide">
+                  081-9186348
+                </span>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
       <footer className="bg-[#3C2415] text-white">
@@ -71,7 +88,7 @@ export default function Footer() {
             {/* Logo */}
             <div className="text-center lg:text-left">
               <Image
-                src="/logo-no-bg.png"
+                src="/images/brand/logo-no-bg.png"
                 alt="logo"
                 width={170}
                 height={170}

@@ -58,7 +58,7 @@ export default function CTASection1() {
                   <Image
                     width={500}
                     height={500}
-                    src="/map1.jpg"
+                    src="/images/contact/map1.jpg"
                     alt="shadcn landing page"
                     unoptimized
                   />
@@ -67,7 +67,7 @@ export default function CTASection1() {
                   <Image
                     width={500}
                     height={500}
-                    src="/me4.png"
+                    src="/images/about/me4.png"
                     alt="shadcn landing page"
                     unoptimized
                   />
