@@ -167,7 +167,9 @@ export default function AdminProducts() {
               <label className="block text-sm font-medium">หมวดหมู่</label>
               <Select value={categoryId} onValueChange={(val) => setCategoryId(val || "")}>
                 <SelectTrigger>
-                  <SelectValue placeholder="-- เลือกหมวดหมู่ --" />
+                  <SelectValue>
+                    {categoryId ? categories.find(c => c.id === categoryId)?.name : "-- เลือกหมวดหมู่ --"}
+                  </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
                   {categories.map((c) => (
@@ -216,7 +218,9 @@ export default function AdminProducts() {
               <Label htmlFor="edit-category">หมวดหมู่</Label>
               <Select value={editCategoryId} onValueChange={(val) => setEditCategoryId(val || "")}>
                 <SelectTrigger id="edit-category">
-                  <SelectValue placeholder="-- เลือกหมวดหมู่ --" />
+                  <SelectValue>
+                    {editCategoryId ? categories.find(c => c.id === editCategoryId)?.name : "-- เลือกหมวดหมู่ --"}
+                  </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
                   {categories.map((c) => (

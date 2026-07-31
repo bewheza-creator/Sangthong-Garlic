@@ -25,7 +25,6 @@ export default function AdminBlogsPage() {
   const [category, setCategory] = useState("");
   const [excerpt, setExcerpt] = useState("");
   const [content, setContent] = useState("");
-  const [readTime, setReadTime] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [currentImageUrl, setCurrentImageUrl] = useState("");
   const [actionLoading, setActionLoading] = useState(false);
@@ -54,7 +53,6 @@ export default function AdminBlogsPage() {
     setCategory("");
     setExcerpt("");
     setContent("");
-    setReadTime("");
     setFile(null);
     setCurrentImageUrl("");
     setEditingId("");
@@ -85,7 +83,7 @@ export default function AdminBlogsPage() {
       }
 
       const { error } = await supabase.from("blogs").insert([
-        { title, category, excerpt, content, read_time: readTime, image_url: imageUrl }
+        { title, category, excerpt, content, image_url: imageUrl }
       ]);
       if (error) throw error;
 
@@ -106,7 +104,6 @@ export default function AdminBlogsPage() {
     setCategory(blog.category || "");
     setExcerpt(blog.excerpt || "");
     setContent(blog.content || "");
-    setReadTime(blog.read_time || "");
     setCurrentImageUrl(blog.image_url || "");
     setFile(null);
     setIsEditOpen(true);
@@ -125,7 +122,7 @@ export default function AdminBlogsPage() {
       }
 
       const { error } = await supabase.from("blogs").update(
-        { title, category, excerpt, content, read_time: readTime, image_url: imageUrl }
+        { title, category, excerpt, content, image_url: imageUrl }
       ).eq("id", editingId);
       
       if (error) throw error;
@@ -153,21 +150,15 @@ export default function AdminBlogsPage() {
     }
   };
 
-  const BlogFormFields = () => (
+  const renderBlogFormFields = () => (
     <>
       <div className="space-y-2">
         <Label>หัวข้อบทความ</Label>
         <Input value={title} onChange={e => setTitle(e.target.value)} required />
       </div>
-      <div className="grid grid-cols-2 gap-4">
-        <div className="space-y-2">
-          <Label>หมวดหมู่</Label>
-          <Input value={category} onChange={e => setCategory(e.target.value)} required placeholder="เช่น เคล็ดลับ" />
-        </div>
-        <div className="space-y-2">
-          <Label>เวลาในการอ่าน</Label>
-          <Input value={readTime} onChange={e => setReadTime(e.target.value)} placeholder="เช่น อ่าน 3 นาที" />
-        </div>
+      <div className="space-y-2">
+        <Label>หมวดหมู่</Label>
+        <Input value={category} onChange={e => setCategory(e.target.value)} required placeholder="เช่น เคล็ดลับ" />
       </div>
       <div className="space-y-2">
         <Label>คำโปรย (Excerpt)</Label>
@@ -206,7 +197,7 @@ export default function AdminBlogsPage() {
               <DialogTitle>สร้างบทความใหม่</DialogTitle>
             </DialogHeader>
             <form onSubmit={handleAddSubmit} className="space-y-4">
-              <BlogFormFields />
+              {renderBlogFormFields()}
               <DialogFooter>
                 <Button type="submit" disabled={actionLoading} className="bg-[#3C2415] hover:bg-[#5a3620]">
                   {actionLoading ? "กำลังบันทึก..." : "บันทึกข้อมูล"}
@@ -223,7 +214,7 @@ export default function AdminBlogsPage() {
             <DialogTitle>แก้ไขบทความ</DialogTitle>
           </DialogHeader>
           <form onSubmit={handleEditSubmit} className="space-y-4">
-            <BlogFormFields />
+            {renderBlogFormFields()}
             <DialogFooter>
               <Button type="submit" disabled={actionLoading} className="bg-[#3C2415] hover:bg-[#5a3620]">
                 {actionLoading ? "กำลังบันทึก..." : "บันทึกการแก้ไข"}

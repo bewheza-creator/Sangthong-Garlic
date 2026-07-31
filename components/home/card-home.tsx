@@ -8,7 +8,7 @@ const data = [
     name: "กระเทียม",
     details: "กระเทียมคุณภาพพัด กลิ่นหอมคัดพิเศษจากแหล่งผลิต",
     img: "/images/home/home1.png",
-    link: "/product/1",
+    link: "/product/547bd4f5-a4b9-45a7-849c-9829d975502e",
     accent: {
       card: "bg-[#ede0f4]",
       title: "text-[#6f28a7]",
@@ -20,7 +20,7 @@ const data = [
     name: "หอมแดง",
     details: "หอมแดงสด ลูกใหญ่ หอมจัด สีสวย คัดเกรดพิเศษ",
     img: "/images/home/home2.png",
-    link: "/product/2",
+    link: "/product/a1cee72b-9503-491f-aaa3-3164de5b57a8",
     accent: {
       card: "bg-[#f7e3cb]",
       title: "text-[#b45d12]",
@@ -32,7 +32,7 @@ const data = [
     name: "พริกแห้ง",
     details: "พริกแห้งเม็ดสวย สีแดงเข็ม เผ็ดจัดจ้าน หอมกลิ่นพริกแท้",
     img: "/images/home/home3.webp",
-    link: "/product/3",
+    link: "/product/8e4ef776-ae25-4933-94f5-b70f34d07de1",
     accent: {
       card: "bg-[#f6d8d8]",
       title: "text-[#bd2329]",
@@ -44,7 +44,7 @@ const data = [
     name: "อื่นๆ",
     details: "สินค้าคุณภาพอื่นๆ หลากหลาย ครบครัน ตอบโจทย์ทุกความต้องการ",
     img: "/images/home/home4.png",
-    link: "/product",
+    link: "/product/b67e417b-f373-4a9a-a4a9-39096134a6be",
     accent: {
       card: "bg-[#d6e5ed]",
       title: "text-[#1676a0]",
