@@ -47,7 +47,7 @@ export default function Footer() {
         <div className="grid gap-5 rounded-3xl bg-[#2B1B12] p-6 shadow-xl md:p-8 lg:grid-cols-[1.3fr_1fr] lg:items-center">
           <div className="flex flex-col gap-2 text-center lg:text-left">
             <h1 className="text-3xl font-bold text-white md:text-4xl">
-              สนใจสั่งซื้อหอมราคาส่ง
+              สนใจสั่งซื้อสินค้าราคาส่ง
             </h1>
             <p className="text-lg text-gray-200 md:text-xl">
               สอบถามข้อมูลสินค้า หรือขอใบเสนอราคาได้เลย
