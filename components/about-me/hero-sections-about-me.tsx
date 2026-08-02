@@ -6,11 +6,15 @@ export default function HeroSectionAbout() {
       <div className="mx-auto max-w-7xl px-4">
         <div className="grid items-center gap-8 lg:grid-cols-2">
           <header className="flex flex-col items-center text-center lg:items-start lg:text-left">
-            <p className="text-[#b91c1c] font-bold text-sm lg:text-base mb-2">เกี่ยวกับร้านแสงทอง</p>
+            <p className="text-[#b91c1c] font-bold text-sm lg:text-base mb-2">
+              เกี่ยวกับร้านแสงทอง
+            </p>
             <h1 className="font-heading my-4 text-4xl text-balance md:text-5xl lg:leading-14 text-[#2d1b11] font-bold">
-              จัดจำหน่าย กระเทียม และพริกแห้ง
+              ผู้จำหน่ายหอมกระเทียมพริกแห้งตลาดไท
               <br />
-              <span className="text-[#b91c1c]">ราคาส่ง มากกว่า 20 ปี</span>
+              <span className="text-[#b91c1c]">
+                ราคาส่ง
+              </span>
             </h1>
             <p className="text-[#5c4a3d] mb-8 text-balance lg:text-lg">
               ร้านแสงทองดำเนินธุรกิจจำหน่าย หอมแดง กระเทียม พริกแห้ง

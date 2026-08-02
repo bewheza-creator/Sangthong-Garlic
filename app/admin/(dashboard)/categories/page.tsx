@@ -13,6 +13,7 @@ import { Trash2, Edit } from "lucide-react";
 export default function AdminCategories() {
   const [categories, setCategories] = useState<any[]>([]);
   const [name, setName] = useState("");
+  const [subtitle, setSubtitle] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -20,6 +21,7 @@ export default function AdminCategories() {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [editingId, setEditingId] = useState("");
   const [editName, setEditName] = useState("");
+  const [editSubtitle, setEditSubtitle] = useState("");
   const [editFile, setEditFile] = useState<File | null>(null);
   const [editLoading, setEditLoading] = useState(false);
   const [currentImageUrl, setCurrentImageUrl] = useState("");
@@ -57,11 +59,12 @@ export default function AdminCategories() {
         imageUrl = publicUrlData.publicUrl;
       }
 
-      const { error: insertError } = await supabase.from("categories").insert([{ name, image_url: imageUrl }]);
+      const { error: insertError } = await supabase.from("categories").insert([{ name, subtitle, image_url: imageUrl }]);
       if (insertError) throw insertError;
 
       toast.success("เพิ่มหมวดหมู่สำเร็จ!");
       setName("");
+      setSubtitle("");
       setFile(null);
       fetchCategories();
     } catch (err: any) {
@@ -74,6 +77,7 @@ export default function AdminCategories() {
   const openEditDialog = (cat: any) => {
     setEditingId(cat.id);
     setEditName(cat.name);
+    setEditSubtitle(cat.subtitle || "");
     setCurrentImageUrl(cat.image_url || "");
     setEditFile(null);
     setIsEditOpen(true);
@@ -101,7 +105,7 @@ export default function AdminCategories() {
 
       const { error: updateError } = await supabase
         .from("categories")
-        .update({ name: editName, image_url: imageUrl })
+        .update({ name: editName, subtitle: editSubtitle, image_url: imageUrl })
         .eq("id", editingId);
 
       if (updateError) throw updateError;
@@ -144,6 +148,15 @@ export default function AdminCategories() {
             />
           </div>
           <div>
+            <label className="block text-sm font-medium mb-1">คำโปรย (เช่น คุณภาพดี ราคาส่ง)</label>
+            <Input
+              type="text"
+              value={subtitle}
+              onChange={(e) => setSubtitle(e.target.value)}
+              placeholder="คุณภาพดี ราคาส่ง"
+            />
+          </div>
+          <div>
             <label className="block text-sm font-medium mb-1">รูปภาพปก</label>
             <Input
               type="file"
@@ -174,6 +187,15 @@ export default function AdminCategories() {
                 value={editName}
                 onChange={(e) => setEditName(e.target.value)}
                 required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="edit-subtitle">คำโปรย</Label>
+              <Input
+                id="edit-subtitle"
+                value={editSubtitle}
+                onChange={(e) => setEditSubtitle(e.target.value)}
+                placeholder="คุณภาพดี ราคาส่ง"
               />
             </div>
             <div className="space-y-2">

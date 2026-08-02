@@ -19,12 +19,14 @@ export default function AdminLogin() {
     e.preventDefault();
     setLoading(true);
     
+    const trimmedUsername = username.trim();
+    
     // แปลง Username ธรรมดาให้เป็นรูปแบบ Email สำหรับ Supabase Auth
-    const emailToLogin = (username.includes("@") ? username : `${username}@admin.com`).toLowerCase();
+    const emailToLogin = (trimmedUsername.includes("@") ? trimmedUsername : `${trimmedUsername}@admin.com`).toLowerCase();
 
     const { error } = await supabase.auth.signInWithPassword({
       email: emailToLogin,
-      password,
+      password: password,
     });
 
     if (error) {

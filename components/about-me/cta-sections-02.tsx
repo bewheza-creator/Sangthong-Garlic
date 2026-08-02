@@ -8,12 +8,12 @@ export default function CTASection() {
           <header className="flex flex-col px-4 py-10 lg:px-12 justify-center">
             <div className="mb-4 space-y-6">
               <h3 className="font-heading text-3xl text-balance md:text-4xl text-[#2d1b11] font-bold">
-                ประสบการณ์มากกว่า 20 ปี
+                ประสบการณ์ที่มีมาอย่างยาวนาน
                 <br />
                 ที่เข้าใจความต้องการของลูกค้า
               </h3>
               <p className="text-[#5c4a3d] md:text-lg leading-relaxed">
-                ด้วยประสบการณ์มากกว่า 20 ปี
+                ด้วยประสบการณ์ที่มีมาอย่างยาวนาน
                 เราเข้าใจความต้องการของลูกค้าเป็นอย่างดี
                 จึงพร้อมให้คำแนะนำเรื่องสินค้า ขนาดบรรจุ และการจัดส่ง
                 เพื่อให้ลูกค้าได้รับ สินค้าที่เหมาะสมกับธุรกิจมากที่สุด

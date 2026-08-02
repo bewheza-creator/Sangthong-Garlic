@@ -61,7 +61,7 @@ export default function AllProductsPage() {
         {/* Right: Hero Image */}
         <div className="w-full md:w-1/2 flex justify-center md:justify-end">
           <div className="w-full max-w-[600px] aspect-[4/3] rounded-3xl flex items-center justify-center relative overflow-hidden bg-transparent">
-             <Image src="/images/home/home4.png" alt="Hero" width="500" height="500" className="object-contain md:object-cover scale-110" />
+             <Image src="/images/home/home4.png" alt="Hero" width="500" height="500" className="object-contain" />
           </div>
         </div>
       </section>
@@ -84,9 +84,9 @@ export default function AllProductsPage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {products.map((product) => (
               <div key={product.id} className="flex flex-col items-center gap-5">
-                <div className="w-full aspect-square bg-[#EADDCE] rounded-[32px] flex items-center justify-center relative overflow-hidden transition-transform hover:scale-105 duration-300 shadow-sm hover:shadow-md">
+                <div className="w-full aspect-square bg-white rounded-[32px] overflow-hidden flex items-center justify-center relative transition-transform hover:scale-105 duration-300 shadow-sm hover:shadow-md">
                    {product.image_url ? (
-                     <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
+                     <img src={product.image_url} alt={product.name} className="w-full h-full object-contain" />
                    ) : (
                      <span className="text-[#6D4527] font-medium text-lg">ไม่มีรูปภาพ</span>
                    )}

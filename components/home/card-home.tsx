@@ -6,7 +6,7 @@ const data = [
   {
     id: 1,
     name: "กระเทียม",
-    details: "กระเทียมคุณภาพพัด กลิ่นหอมคัดพิเศษจากแหล่งผลิต",
+    details: "กระเทียมราคาส่ง คุณภาพคัดเกรด | ร้านแสงทอง ตลาดไท",
     img: "/images/home/home1.png",
     link: "/product/547bd4f5-a4b9-45a7-849c-9829d975502e",
     accent: {
@@ -18,7 +18,7 @@ const data = [
   {
     id: 2,
     name: "หอมแดง",
-    details: "หอมแดงสด ลูกใหญ่ หอมจัด สีสวย คัดเกรดพิเศษ",
+    details: "หอมแดงราคาส่ง สดใหม่ทุกล็อต | ร้านแสงทอง ตลาดไท",
     img: "/images/home/home2.png",
     link: "/product/a1cee72b-9503-491f-aaa3-3164de5b57a8",
     accent: {
@@ -30,7 +30,7 @@ const data = [
   {
     id: 3,
     name: "พริกแห้ง",
-    details: "พริกแห้งเม็ดสวย สีแดงเข็ม เผ็ดจัดจ้าน หอมกลิ่นพริกแท้",
+    details: "พริกแห้งราคาส่ง เม็ดสวย คัดพิเศษ | ร้านแสงทอง ตลาดไท",
     img: "/images/home/home3.webp",
     link: "/product/8e4ef776-ae25-4933-94f5-b70f34d07de1",
     accent: {
@@ -42,7 +42,7 @@ const data = [
   {
     id: 4,
     name: "อื่นๆ",
-    details: "สินค้าคุณภาพอื่นๆ หลากหลาย ครบครัน ตอบโจทย์ทุกความต้องการ",
+    details: "หอมเจียวราคาส่ง พริกไทราคาส่ง | ร้านแสงทอง ตลาดไท",
     img: "/images/home/home4.png",
     link: "/product/b67e417b-f373-4a9a-a4a9-39096134a6be",
     accent: {

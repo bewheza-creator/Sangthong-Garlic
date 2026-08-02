@@ -8,19 +8,19 @@ const stats = [
   {
     id: 1,
     name: "คัดสรรวัตถุดิบคุณภาพ สดใหม่ ได้มาตรฐาน",
-    value: "คัดคุณภาพทุกล็อต",
+    value: "สินค้าคุณภาพดี",
     icon: <FaLeaf />,
   },
   {
     id: 2,
     name: "แพ็คอย่างดี ส่งไว ทั่วประเทศ",
-    value: "จัดส่งรวดเร็วถึงมือ",
+    value: "จัดส่งได้ทั่วไทย",
     icon: <FaTruckFast />,
   },
   {
     id: 3,
     name: "รับประกันตรงปก มั่นใจได้",
-    value: "รับประกันสินค้า",
+    value: "มีราคาส่ง",
     icon: <FaShieldHeart />,
   },
 ];
@@ -45,9 +45,9 @@ export default function StatSection() {
                 {stat.value}
               </h3>
 
-              <p className="text-muted-foreground">
+              {/* <p className="text-muted-foreground">
                 {stat.name}
-              </p>
+              </p> */}
             </div>
           ))}
         </div>

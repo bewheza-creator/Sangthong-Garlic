@@ -34,12 +34,11 @@ const menu = [
 ];
 
 const product = [
-  { id: 1, name: "กระเทียม", href: "#" },
-  { id: 2, name: "หอมแดง", href: "#" },
-  { id: 3, name: "พริกแห้ง", href: "#" },
-  { id: 4, name: "สินค้าร้านฯ", href: "#" },
+  { id: 1, name: "กระเทียม", href: "/product/547bd4f5-a4b9-45a7-849c-9829d975502e" },
+  { id: 2, name: "หอมแดง", href: "/product/a1cee72b-9503-491f-aaa3-3164de5b57a8" },
+  { id: 3, name: "พริกแห้ง", href: "/product/8e4ef776-ae25-4933-94f5-b70f34d07de1" },
+  { id: 4, name: "สินค้าร้านฯ", href: "/product_all" },
 ];
-
 
 export default function Footer() {
   return (
@@ -56,21 +55,17 @@ export default function Footer() {
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            <Link
-              href="https://line.me"
-              target="_blank"
-              className="flex w-full items-center justify-center gap-3 rounded-2xl bg-[#00B900] px-6 py-4 transition hover:bg-[#009900]"
-            >
+            <div className="flex flex-col w-full items-center justify-center gap-3 rounded-2xl bg-[#00B900] px-6 py-4 transition hover:bg-[#009900]">
               <FaLine className="text-3xl text-white" />
               <span className="text-xl font-bold tracking-wide text-white">
                 ทัก LINE
               </span>
-            </Link>
+              <span className="text-xl font-bold tracking-wide text-white">
+                sangthong09
+              </span>
+            </div>
 
-            <a
-              href="tel:0819186348"
-              className="flex w-full items-center justify-center gap-3 rounded-2xl bg-[#D4A373] px-6 py-4 text-[#2B1B12] transition hover:bg-[#C39363]"
-            >
+            <div className="flex w-full items-center justify-center gap-3 rounded-2xl bg-[#D4A373] px-6 py-4 text-[#2B1B12] transition hover:bg-[#C39363]">
               <FaPhoneAlt className="text-3xl" />
               <div className="flex flex-col text-left leading-tight">
                 <span className="text-sm font-semibold">ติดต่อเรา</span>
@@ -78,7 +73,7 @@ export default function Footer() {
                   081-9186348
                 </span>
               </div>
-            </a>
+            </div>
           </div>
         </div>
       </div>
@@ -157,12 +152,12 @@ export default function Footer() {
               <div className="space-y-5 text-gray-300">
                 <div className="flex items-center justify-center lg:justify-start gap-3">
                   <FaPhoneAlt />
-                  <span>08x-xxx-xxxx</span>
+                  <span>081-9186348</span>
                 </div>
 
                 <div className="flex items-center justify-center lg:justify-start gap-3">
                   <FaLine />
-                  <span>@yourline</span>
+                  <span>sangthong09</span>
                 </div>
 
                 <div className="flex items-start justify-center lg:justify-start gap-3">
