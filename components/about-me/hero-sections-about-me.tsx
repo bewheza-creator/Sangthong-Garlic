@@ -1,4 +1,7 @@
 import { Badge } from "@/components/ui/badge";
+import aboutme from "@/images/about-me-hero.png"
+import Image from "next/image";
+
 
 export default function HeroSectionAbout() {
   return (
@@ -23,8 +26,10 @@ export default function HeroSectionAbout() {
               ได้มาตรฐาน ในราคาส่งที่คุ้มค่า
             </p>
           </header>
-          <img
-            src="/images/hero/hero.avif"
+          <Image
+            width={500}
+            height={500}
+            src={aboutme}
             alt="Garlic, onion, and dried chili"
             className="w-full object-cover"
           />

@@ -5,7 +5,6 @@ export default function CardContact() {
     <section className="w-full py-6 bg-transparent">
       <div className="max-w-[1000px] mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          
           {/* ================= Contact (Left, smaller width) ================= */}
           <div className="lg:col-span-5 relative mt-6 flex flex-col">
             {/* Tag */}
@@ -42,7 +41,7 @@ export default function CardContact() {
                       LINE
                     </p>
                     <h2 className="text-xl lg:text-2xl font-extrabold text-black tracking-tight">
-                      @saengthong
+                      sangthong09
                     </h2>
                   </div>
                 </div>
@@ -58,21 +57,21 @@ export default function CardContact() {
             </div>
 
             <div className="relative flex flex-col rounded-[1.5rem] border border-[#e1ccb7] bg-[#fdf7f1] p-2 pt-8 shadow-sm">
-              
               {/* Map container */}
               <div className="relative w-full rounded-xl overflow-hidden border border-[#e1ccb7] bg-gray-100 h-[180px]">
+                \
                 <iframe
-                  title="Google Map"
-                  src="https://www.google.com/maps?q=ตลาดไท&output=embed"
-                  className="w-full h-full border-0 absolute inset-0"
-                  loading="lazy"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3869.9349243473807!2d100.6338197!3d14.081018799999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x311d8105ddcf0af5%3A0xfe4b446a6a7ed54c!2z4Lij4LmJ4Liy4LiZ4LmB4Liq4LiH4LiX4Lit4LiHICjguJXguKXguLLguJTguYTguJcp!5e0!3m2!1sth!2sth!4v1785689276131!5m2!1sth!2sth"
+                  width="600"
+                  height="450"
+                  style={{ border: 0 }}
                   allowFullScreen
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-                
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                ></iframe>
                 {/* Overlaid Button */}
                 <a
-                  href="https://maps.google.com/?q=ตลาดไท"
+                  href="https://maps.app.goo.gl/Cm9vovEGSFmaQU4c6"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center justify-center gap-2 rounded-xl bg-[#8b1d18] py-2 px-5 text-sm font-bold text-white transition-all duration-300 hover:bg-[#701510] shadow-md whitespace-nowrap z-20"
