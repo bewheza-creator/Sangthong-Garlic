@@ -32,7 +32,7 @@ const product = [
   { id: 1, name: "กระเทียม", href: "/product/547bd4f5-a4b9-45a7-849c-9829d975502e" },
   { id: 2, name: "หอมแดง", href: "/product/a1cee72b-9503-491f-aaa3-3164de5b57a8" },
   { id: 3, name: "พริกแห้ง", href: "/product/8e4ef776-ae25-4933-94f5-b70f34d07de1" },
-  { id: 4, name: "สินค้าร้านฯ", href: "/product_all" },
+  { id: 4, name: "อื่นๆ", href: "/product/18fe19a0-fd84-4fd8-8d4c-b53fe202259f" },
 ];
 
 export default function Footer() {
