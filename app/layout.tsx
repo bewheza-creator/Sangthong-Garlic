@@ -17,7 +17,38 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Sangthong-Garlic",
-  description: "Sangthong-Garlic",
+  description: "Sangthong-Garlic ขายส่งกระเทียมคุณภาพ",
+  keywords: [
+    "กระเทียม",
+    "กระเทียมแสงทอง",
+    "ขายส่งกระเทียม",
+    "Sangthong-Garlic",
+    "garlic",
+  ],
+  openGraph: {
+    title: "Sangthong-Garlic",
+    description: "Sangthong-Garlic ขายส่งกระเทียมคุณภาพ",
+    siteName: "Sangthong-Garlic",
+    images: [
+      {
+        url: "/images/brand/logo.jpg",
+        width: 800,
+        height: 600,
+        alt: "Sangthong-Garlic Logo",
+      },
+    ],
+    locale: "th_TH",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sangthong-Garlic",
+    description: "Sangthong-Garlic ขายส่งกระเทียมคุณภาพ",
+    images: ["/images/brand/logo.jpg"],
+  },
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({
