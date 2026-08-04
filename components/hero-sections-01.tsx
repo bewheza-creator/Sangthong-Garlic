@@ -25,14 +25,14 @@ export default function HeroSection() {
             <div className="flex justify-center lg:justify-start gap-4">
               <Button
                 className="bg-[#4a3219] hover:bg-[#4a3219]/90 text-white text-lg px-6 h-14 rounded-md flex gap-2 items-center shadow-none border-none"
-                render={<Link href="#products" />}
+                render={<Link href="/product_all" />}
                 nativeButton={false}
               >
                 <ShoppingCart className="w-5 h-5" /> ดูสินค้า
               </Button>
               <Button
                 className="bg-[#06C755] hover:bg-[#06C755]/90 text-white text-lg px-6 h-14 rounded-md flex gap-2 items-center shadow-none border-none"
-                render={<Link href="#line" />}
+                render={<Link href="https://line.me/ti/p/cVxHNqTGAg" target="_blank" />}
                 nativeButton={false}
               >
                 <FaLine className="w-6 h-6" /> ติดต่อ LINE

@@ -24,7 +24,7 @@ export default function CardContact() {
                       โทรศัพท์
                     </p>
                     <h2 className="text-xl lg:text-2xl font-extrabold text-black tracking-tight">
-                      081-9186348
+                      <a href="tel:0819186348">081-9186348</a>
                     </h2>
                   </div>
                 </div>
@@ -40,9 +40,11 @@ export default function CardContact() {
                     <p className="text-sm font-bold text-[#5c5c5c] mb-0.5">
                       LINE
                     </p>
-                    <h2 className="text-xl lg:text-2xl font-extrabold text-black tracking-tight">
-                      sangthong09
-                    </h2>
+                    <a href="https://line.me/ti/p/cVxHNqTGAg" target="_blank" rel="noopener noreferrer">
+                      <h2 className="text-xl lg:text-2xl font-extrabold text-black tracking-tight">
+                        sangthong09
+                      </h2>
+                    </a>
                   </div>
                 </div>
               </div>

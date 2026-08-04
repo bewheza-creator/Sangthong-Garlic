@@ -11,15 +11,10 @@ const social = [
   {
     id: 1,
     icon: <FaLine />,
-    href: "https://line.me",
+    href: "https://line.me/ti/p/cVxHNqTGAg",
   },
   {
     id: 2,
-    icon: <FaFacebookF />,
-    href: "https://facebook.com",
-  },
-  {
-    id: 3,
     icon: <FaPhoneAlt />,
     href: "tel:0812345678",
   },
@@ -55,6 +50,7 @@ export default function Footer() {
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
+            <a href="https://line.me/ti/p/cVxHNqTGAg" target="_blank" rel="noopener noreferrer">
             <div className="flex flex-col w-full items-center justify-center gap-3 rounded-2xl bg-[#00B900] px-6 py-4 transition hover:bg-[#009900]">
               <FaLine className="text-3xl text-white" />
               <span className="text-xl font-bold tracking-wide text-white">
@@ -64,13 +60,14 @@ export default function Footer() {
                 sangthong09
               </span>
             </div>
+            </a>
 
             <div className="flex w-full items-center justify-center gap-3 rounded-2xl bg-[#D4A373] px-6 py-4 text-[#2B1B12] transition hover:bg-[#C39363]">
               <FaPhoneAlt className="text-3xl" />
               <div className="flex flex-col text-left leading-tight">
                 <span className="text-sm font-semibold">ติดต่อเรา</span>
                 <span className="text-xl font-bold tracking-wide">
-                  081-9186348
+                  <a href="tel:0819186348">081-9186348</a>
                 </span>
               </div>
             </div>
@@ -98,13 +95,13 @@ export default function Footer() {
 
               <div className="flex justify-center lg:justify-start gap-3 mt-6">
                 {social.map((item) => (
-                  <Link
+                  <a
                     key={item.id}
                     href={item.href}
                     className="w-11 h-11 rounded-full border border-white flex items-center justify-center hover:bg-white hover:text-[#3C2415] transition"
                   >
                     {item.icon}
-                  </Link>
+                  </a>
                 ))}
               </div>
             </div>

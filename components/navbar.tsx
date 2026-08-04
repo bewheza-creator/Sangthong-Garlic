@@ -80,14 +80,14 @@ export default function Navbar() {
             <FaPhoneAlt className="text-lg md:text-xl" />
             <span className="text-sm md:text-base">081-918-6348</span>
           </a>
-          <Link
-            href="https://line.me"
+          <a
+            href="https://line.me/ti/p/cVxHNqTGAg"
             target="_blank"
             className="flex items-center gap-2 bg-[#00B900] hover:bg-[#009900] transition px-4 py-2 rounded-lg font-bold"
           >
             <FaLine className="text-2xl" />
             <span className="text-sm md:text-base tracking-wide">ทัก LINE</span>
-          </Link>
+          </a>
         </div>
 
         {/* Mobile menu button */}
