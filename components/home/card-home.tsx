@@ -44,7 +44,7 @@ const data = [
     name: "อื่นๆ",
     details: "หอมเจียวราคาส่ง พริกไทราคาส่ง | ร้านแสงทอง ตลาดไท",
     img: "/images/home/home4.png",
-    link: "/product/18fe19a0-fd84-4fd8-8d4c-b53fe202259f",
+    link: "/product/18fe19a0-fd84-4fd8-8d4c-b53fe2022597",
     accent: {
       card: "bg-[#d6e5ed]",
       title: "text-[#1676a0]",
