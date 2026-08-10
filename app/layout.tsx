@@ -16,18 +16,29 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sangthong-Garlic",
-  description: "Sangthong-Garlic ขายส่งกระเทียมคุณภาพ",
+  title: "หอม กระเทียม พริกแห้ง ราคาส่ง ตลาดไท | ร้านแสงทอง",
+  description:
+    "ร้านแสงทอง ขายส่งหอมแดง กระเทียม พริกแห้ง ราคาส่ง หน้าร้านที่ตลาดไท สดใหม่ คัดคุณภาพ จัดส่งทั่วไทย",
   keywords: [
+    "หอม",
     "กระเทียม",
+    "ตลาดไท",
+    "หอมแดง",
+    "พริกแห้ง",
     "กระเทียมแสงทอง",
     "ขายส่งกระเทียม",
+    "ขายส่งหอมแดง ตลาดไท",
+    "หอมแดง กระเทียม ตลาดไท",
     "Sangthong-Garlic",
     "garlic",
   ],
+  verification: {
+    google: "j_qt9kCSfTXEgYsAeGdp94w19EEe2w5bPi2lCWuqCKk",
+  },
   openGraph: {
-    title: "Sangthong-Garlic",
-    description: "Sangthong-Garlic ขายส่งกระเทียมคุณภาพ",
+    title: "หอม กระเทียม พริกแห้ง ราคาส่ง ตลาดไท | ร้านแสงทอง",
+    description:
+      "ร้านแสงทอง ขายส่งหอมแดง กระเทียม พริกแห้ง ราคาส่ง หน้าร้านที่ตลาดไท สดใหม่ คัดคุณภาพ จัดส่งทั่วไทย",
     siteName: "Sangthong-Garlic",
     images: [
       {
@@ -42,8 +53,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sangthong-Garlic",
-    description: "Sangthong-Garlic ขายส่งกระเทียมคุณภาพ",
+    title: "หอม กระเทียม พริกแห้ง ราคาส่ง ตลาดไท | ร้านแสงทอง",
+    description:
+      "ร้านแสงทอง ขายส่งหอมแดง กระเทียม พริกแห้ง ราคาส่ง หน้าร้านที่ตลาดไท สดใหม่ คัดคุณภาพ จัดส่งทั่วไทย",
     images: ["/images/brand/logo.jpg"],
   },
   icons: {
