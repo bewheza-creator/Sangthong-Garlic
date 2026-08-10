@@ -172,3 +172,11 @@ export default function Footer() {
           </div>
 
           {/* Copyright */}
+          <div className="border-t border-white/20 mt-10 pt-6 text-center text-sm text-gray-400">
+            © {new Date().getFullYear()} ร้านแสงทอง. All Rights Reserved.
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
