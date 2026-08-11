@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://sangthong-garlic.vercel.app/sitemap.xml',
+    sitemap: 'https://sangthong-garlic.com/sitemap.xml',
   }
 }
