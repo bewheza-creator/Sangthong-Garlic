@@ -96,7 +96,7 @@ export default function Footer() {
               <div className="flex justify-center lg:justify-start gap-3 mt-6">
                 {social.map((item) => (
                   
-                    key={item.id}
+                    <a key={item.id}
                     href={item.href}
                     className="w-11 h-11 rounded-full border border-white flex items-center justify-center hover:bg-white hover:text-[#3C2415] transition"
                   >
