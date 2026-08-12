@@ -16,7 +16,7 @@ const social = [
   {
     id: 2,
     icon: <FaPhoneAlt />,
-    href: "tel:0812345678",
+    href: "tel:0819186348",
   },
 ];
 
@@ -95,8 +95,8 @@ export default function Footer() {
 
               <div className="flex justify-center lg:justify-start gap-3 mt-6">
                 {social.map((item) => (
-                  <a
-                    key={item.id}
+                  
+                    <a key={item.id}
                     href={item.href}
                     className="w-11 h-11 rounded-full border border-white flex items-center justify-center hover:bg-white hover:text-[#3C2415] transition"
                   >
